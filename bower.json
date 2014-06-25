@@ -1,0 +1,10 @@
+{
+  "name": "cas-fee-nailedit",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "~1.11.0",
+    "bootstrap": "~3.1.1"
+  },
+  "devDependencies": {}
+}
