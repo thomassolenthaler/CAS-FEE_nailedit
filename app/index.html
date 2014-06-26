@@ -7,15 +7,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
+        <link rel="stylesheet" href="styles/reset.css">
+
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" /> -->
         <!-- endbower -->
         <!-- endbuild -->
 
         <!-- build:css styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
+
+
 
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -26,14 +30,61 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <div class="hero-unit">
-            <h1>'Allo, 'Allo!</h1>
-            <p>You now have</p>
-            <ul>
-                <li>HTML5 Boilerplate</li>
-                <li>Sass</li>
-                <li>Modernizr</li>
-            </ul>
+        <div id="wrapper">
+            <header class="clearfix">
+                <nav class="nav-left">
+                    <ul>
+                        <li><a href="">Trending</a></li>
+                        <li><a href="">New</a></li>
+                        <li><a href="">Categories</a></li>
+                    </ul>
+                </nav>
+                <nav class="nav-right">
+                    <ul>
+                        <li><input type="search" placeholder="Search" results="5" autosave="some_unique_value" name="s" /></li>
+                        <li><a href="" class="btn">Login</a></li>
+                        <li><a href="" class="btn">Register</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <div id="main">
+                <form class="share-form">
+                    <input id="input-article" class="input-huge" placeholder="Type url or article to share" /> <button class="btn-share">Share</button>
+                </form>
+                <div class="article-wrapper">
+                    <article>
+                        <img src="" alt="" /><h2>Catchy title</h2>
+                        <p>Lorem ipsum</p>
+                        <p class="txt-line">shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented 84 times</a></p>
+                        <button class="btn">Commend</button>
+                        <button class="btn">...</button>
+                    </article>
+                    <article>
+                        <img src="" alt="" /><h2>Catchy title</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <p class="txt-line">shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented 84 times</a></p>
+                        <button class="btn">Commend</button>
+                        <button class="btn">...</button>
+                    </article>
+                    <article>
+                        <img src="" alt="" /><h2>Catchy title</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+                            Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,</p>
+                        <p class="txt-line">shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented 84 times</a></p>
+                        <button class="btn">Commend</button>
+                        <button class="btn">...</button>
+                    </article>
+                    <article>
+                        <img src="" alt="" /><h2>Catchy title</h2>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <p class="txt-line">shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented 84 times</a></p>
+                        <button class="btn">Commend</button>
+                        <button class="btn">...</button>
+                    </article>
+                </div>
+            </div>
+            <footer>© 2014 whatever</footer>
         </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
