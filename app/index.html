@@ -11,7 +11,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" /> -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -28,40 +28,40 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-<div id="outer-wrap">
-    <div id="inner-wrap">
-        <header id="top" role="banner">
-            <div class="block">
-                <h1 class="block-title">Nailedit</h1>
-                <a class="nav-btn" id="nav-open-btn" href="#nav">Navigation</a>
-                <a class="search-btn" id="nav-open-search" href="#nav">Search</a>
-            </div>
-        </header>
 
-        <nav id="nav" role="navigation">
-            <div class="block">
-                <ul>
-                    <li><a href="">Trending</a></li>
-                    <li><a href="">New</a></li>
-                    <li><a href="">Categories</a></li>
-                </ul>
-                <a class="close-btn" id="nav-close-btn" href="#top">Return to Content</a>
-            </div>
-        </nav>
-
-        <nav id="nav-search" role="navigation">
-            <div class="block">
-            <ul>
-                <li><input type="search" placeholder="Search" results="5" autosave="some_unique_value" name="s"/>
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="../" class="navbar-brand">Nailedit</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a href="#">Trendingd</a>
                 </li>
-                <li><a href="" class="btn">Login</a></li>
-                <li><a href="" class="btn">Register</a></li>
+                <li>
+                    <a href="#">New</a>
+                </li>
+                <li>
+                    <a href="#">Categories</a>
+                </li>
             </ul>
-            <a class="close-btn" id="nav-close-search" href="#top">Return to Content</a>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="http://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Login</a></li>
+                <li><a href="http://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Register</a></li>
+            </ul>
         </nav>
+    </div>
+</header>
 
-        <div id="main">
+
+        <div class="container">
             <form class="share-form">
                 <input id="input-article" class="input-huge" placeholder="Type url or article to share"/>
                 <button class="btn-share">Share</button>
@@ -141,8 +141,7 @@
             </div>
         </div>
         <footer>© 2014 whatever</footer>
-    </div>
-</div>
+
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
