@@ -29,7 +29,7 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<header class="navbar navbar-static-top" id="top" role="banner">
+<header class="navbar navbar-inverse navbar-static-top bs-docs-nav" id="top" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -40,7 +40,7 @@
             </button>
             <a href="../" class="navbar-brand">Nailedit</a>
         </div>
-        <nav class="collapse navbar-collapse" role="navigation">
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li class="active">
                     <a href="#">Trendingd</a>
@@ -56,14 +56,19 @@
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Register</a></li>
             </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form>
         </nav>
     </div>
 </header>
 
 
 <div class="container">
-    <form class="share-form">
-        <input id="input-article" class="input-huge" placeholder="Type url or article to share"/>
+    <form class="share-form form-inline" role="form">
+        <input id="input-article" class="input-huge col-xs-6" placeholder="Type url or article to share"/>
         <button class="btn-share">Share</button>
     </form>
     <div class="article-wrapper">
@@ -139,8 +144,9 @@
             <button class="btn">...</button>
         </article>
     </div>
+    <footer>© 2014 whatever</footer>
 </div>
-<footer>© 2014 whatever</footer>
+
 
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
