@@ -25,8 +25,7 @@
 </head>
 <body>
 <!--[if lt IE 10]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <header class="navbar navbar-inverse navbar-static-top bs-docs-nav" id="top" role="banner">
@@ -38,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="../" class="navbar-brand">Nailedit</a>
+            <a href="/" class="navbar-brand">Nailedit</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
@@ -70,130 +69,53 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="input-group">
-                    <input type="text" id="input-article" class="form-control input-lg" placeholder="Type url or article to share">
+                    <input id="input-article" type="text" class="form-control input-lg" placeholder="Type url or article to share">
                     <span class="input-group-btn">
-                        <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#addLinkModal">Share</button>
+                        <button id="btn-article-share" type="button" class="btn btn-default btn-lg">Share</button>
                     </span>
                 </div>
             </div>
         </div>
     </form>
-
-    <div class="article-wrapper">
-        <article class="col-xs-12 col-md-12">
-            <a class="pull-left" href="#">
-                <img class="media-object"> </a>
-
-            <div class="media-body">
-                <h4 class="media-heading">Catchy title</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-
-            <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>,
-                <a href="#">commented 84 times</a></p>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCommantModal">Add Commend</button>
-            <button type="button" class="btn btn-default">...</button>
-        </article>
-
-        <article class="col-xs-12 col-md-12">
-            <a class="pull-left" href="#">
-                <img class="media-object"></a>
-
-            <div class="media-body">
-                <h4 class="media-heading">Catchy title</h4>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                ipsum dolor sit amet.
-            </div>
-
-            <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>,
-                <a href="#">commented 3 times</a></p>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCommantModal">Add Commend</button>
-            <button type="button" class="btn btn-default">...</button>
-
-            <div class="comments-fix">
-                <h4>All 3 Commants</h4>
-
-                <div class="comments">
-                    <div class="comment">
-                        <p>Lorem ipsum dolor sit amet,</p>
-
-                        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> -3 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">1 hours ago</a> by <a href="#">Donie89</a></p>
-                    </div>
-                    <div class="comment">
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt
-                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                            justo duo
-                            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                            dolor</p>
-
-                        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 4 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">20 minute ago</a> by <a href="#">Darko72</a></p>
-                    </div>
-                    <div class="comment">
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                            invidunt
-                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                            justo duo
-                            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-                            dolor
-                            sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                            eirmod tempor
-                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
-                            accusam et
-                            justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-                            Lorem
-                            ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                            nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
-                            vero
-                            eos</p>
-
-                        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">3 minute ago</a> by <a href="#">JohneDoe94</a></p>
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="col-xs-12 col-md-12">
-            <div class="media-body">
-                <h4 class="media-heading">Catchy title</h4>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-            <p class="txt-line"><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented 84 times</a></p>
-            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCommantModal">Add Commend </button>
-            <button type="button" class="btn btn-default">...</button>
-        </article>
-    </div>
+    <div id="article-holder" class="article-wrapper"></div>
 </div>
 
 <footer>
     <div class="container">© 2014 whatever</div>
 </footer>
 
+<!-- Article Box prototype -->
+<div class="hidden clearfix">
+    <article id="article-prototype" class="col-xs-12 col-md-12">
+        <a class="pull-left" href="#"><img class="media-object"></a>
+        <div class="media-body">
+            <h4 class="media-heading">Catchy title</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+            vulputate fringilla. Donec lacinia congue felis in faucibus.
+        </div>
+        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>,
+            <a href="#">commented 84 times</a></p>
+        <button type="button" class="btn btn-default btn-comment-add">Add Commend</button>
+        <button type="button" class="btn btn-default">...</button>
+    </article>
+</div>
+
 <!-- Add Comment Modal -->
-<div class="modal fade" id="addCommantModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div id="addCommentModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add Commant</h4>
+                <h4 class="modal-title">Add Comment</h4>
             </div>
             <form role="form">
                 <div class="modal-body">
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea id="input-comment" class="form-control" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Commant</button>
+                    <button id="btn-comment-save" type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -201,34 +123,33 @@
 </div>
 
 <!-- Add Link Modal -->
-<div class="modal fade" id="addLinkModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+<div id="addArticleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add Link</h4>
+                <h4 class="modal-title">Add Link</h4>
             </div>
             <form class="form-horizontal" role="form">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="link" class="col-sm-2 control-label">Link</label>
+                        <label for="input-article-title" class="col-sm-2 control-label">Article</label>
 
                         <div class="col-sm-10">
-                            <input type="text" id="link" name="link" class="form-control input-lg" placeholder="Type url or article to share">
+                            <input id="input-article-title" type="text"  name="link" class="form-control input-lg" placeholder="Type url or article to share">
                         </div>
                     </div>
                     <div class="form-group" class="col-sm-2 control-label">
-                        <label for="text" class="col-sm-2 control-label">Text</label>
+                        <label for="input-article-text" class="col-sm-2 control-label">Text</label>
 
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="text" rows="3"></textarea>
+                            <textarea class="form-control" id="input-article-text" rows="3"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save Link</button>
+                    <button id="btn-article-save" type="button" type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

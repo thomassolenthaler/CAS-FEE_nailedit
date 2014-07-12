@@ -18,7 +18,7 @@ var nailedit = (function($,console) {
     var model = {
         article:{
             /**
-             *
+             * Add article to datastack
              * @param article
              * @param callback
              * @returns {boolean}
@@ -48,7 +48,7 @@ var nailedit = (function($,console) {
                 callback(article);
             },
             /**
-             * Remove all  articles
+             * Remove all articles
              * @param callback
              */
             removeAll:function(callback) {
@@ -128,10 +128,11 @@ var nailedit = (function($,console) {
                     upvote:0,
                     downvote:0
                 };
+                var vote;
                 var votes = helper.find(article_id,data.vote,'article_id');
 
                 // loop votes from article and summarize votes by type
-                for(var vote in votes) {
+                for(vote in votes) {
                     if(votes.hasOwnProperty(vote)) {
                         vote.type === 'up' ? sum.upvote++ : sum.downvote--;
                     }
@@ -151,9 +152,10 @@ var nailedit = (function($,console) {
          * @returns {*}
          */
         find:function(needle,haystack,property) {
+            var elem;
             property = property || 'id';
 
-            for(var elem in haystack) {
+            for(elem in haystack) {
                 if(haystack.hasOwnProperty(elem) && elem[property] === needle) {
                     return elem;
                 }
@@ -162,30 +164,42 @@ var nailedit = (function($,console) {
         }
     };
 
-    // our public interface
+    // our public methods
     var n = {
         run:function() {
-            data.article = {};
-            data.comment = {};
-            data.vote = {};
+            // initialize empty data storages
+            data.article = [];
+            data.comment = [];
+            data.vote = [];
 
-            n._bindEvents();
+            n._bindGlobalEvents();
             model.article.getAll(n.renderArticles);
         },
         renderArticles:function(articles) {
+            var article;
             if(articles.length > 0) {
-                for(var article in articles) {
+                for(article in articles) {
                     if(articles.hasOwnProperty(article)) {
-                        console.log(article);
+                        n.getArticleHTML(article);
                     }
                 }
             } else {
                 throw "no articles to render";
             }
         },
+        getArticleHTML:function(article) {
+            var data = article || {};
+            var $article = $('#article-prototype').clone(); // get a copy of the article html
+            n._bindArticleEvents($article);
+
+            $article.removeClass('hidden');
+            $article.appendTo('#article-holder');
+        },
         addArticle:function() {
-            var content = $('#article-input').val();
+            console.log('addarticle');
+            var content = $('#input-article').val();
             if(content !== '') {
+                n.getArticleHTML();
                 model.article.add({content:content});
             } else {
                 throw "article cannot be empty";
@@ -201,7 +215,8 @@ var nailedit = (function($,console) {
             }
         },
         addComment:function() {
-            var content = $('#comment-input').val();
+            console.log('addComment');
+            var content = $('#input-comment').val();
             if(content !== '') {
                 model.comment.add({content:content});
             } else {
@@ -222,16 +237,54 @@ var nailedit = (function($,console) {
                 throw "type has to be up or down";
             }
         },
-        _bindEvents:function() {
-            $('.btn-share').on('click', n._onClickShare);
-            $('.btn-vote-up').on('click', n._onClickVoteUp);
-            $('.btn-vote-down').on('click', n._onClickVoteDown);
-            $('.btn-comment').on('click', n._onClickComment);
-            $('.btn-comment-add').on('click', n._onClickCommentAdd);
+        showArticleModal:function() {
+            n._bindArticleModalEvents();
+            $('#addArticleModal').modal('show');
+        },
+        hideArticleModal:function() {
+            n._unbindArticleModalEvents();
+            $('#addArticleModal').modal('hide');
+        },
+        showCommentModal:function() {
+            n._bindCommentModalEvents();
+            $('#addCommentModal').modal('show');
+        },
+        hideCommentModal:function() {
+            n._unbindCommentModalEvents();
+            $('#addCommentModal').modal('hide');
+        },
+        _bindGlobalEvents:function() {
+            $('#btn-article-share').on('click', n._onClickShare);
+        },
+        _bindArticleEvents:function($article) {
+            $('.btn-comment-add',$article).on('click', n._onClickCommentAdd);
+            $('.btn-vote-up',$article).on('click', n._onClickVoteUp);
+            $('.btn-vote-down',$article).on('click', n._onClickVoteDown);
+            $('.btn-comment',$article).on('click', n._onClickComment);
+        },
+        _bindCommentModalEvents:function() {
+            $('#btn-comment-save').on('click',n._onClickCommentSave);
+        },
+        _unbindCommentModalEvents:function() {
+            $('#input-comment').val();
+            $('#btn-comment-save').off('click');
+        },
+        _bindArticleModalEvents:function() {
+            $('#btn-article-save').on('click',n._onClickArticleAdd);
+        },
+        _unbindArticleModalEvents:function() {
+            $('#input-article-title').val('');
+            $('#input-article-text').val('');
+            $('#btn-article-save').off('click');
         },
         _onClickShare:function() {
-            n.addArticle();
+            n.showArticleModal();
+            $('#input-article-title').val($('#input-article').val());
             return false;
+        },
+        _onClickArticleAdd:function() {
+            n.addArticle();
+            n.hideArticleModal();
         },
         _onClickVoteUp:function() {
             n.addVote('up',function() {
@@ -245,7 +298,15 @@ var nailedit = (function($,console) {
             n.addComment();
         },
         _onClickCommentAdd:function() {
+            console.log("comment add");
+            $('#addCommentModal').modal('show');
+            n.showCommentModal();
+        },
+        _onClickCommentSave:function() {
             n.addComment();
+            n.hideCommentModal();
+
+            return false; // no form submit wanted ;)
         }
     };
 
