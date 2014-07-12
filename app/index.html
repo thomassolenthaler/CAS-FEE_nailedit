@@ -65,114 +65,166 @@
     </div>
 </header>
 
-
 <div class="container">
-    <form class="share-form form-inline" role="form">
-        <input id="input-article" class="input-huge col-xs-6" placeholder="Type url or article to share"/>
-        <button class="btn-share">Share</button>
+    <form class="form-horizontal share-form form-inline" role="form">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="input-group">
+                    <input type="text" id="input-article" class="form-control input-lg"
+                           placeholder="Type url or article to share">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-lg btn-share" type="button">Share</button>
+                    </span>
+                </div>
+            </div>
+        </div>
     </form>
+
     <div class="article-wrapper">
-        <article>
-            <img src="" alt=""/>
+        <article class="col-xs-12 col-md-12">
+            <a class="pull-left" href="#">
+                <img class="media-object"> </a>
 
-            <h2>Catchy title</h2>
+            <div class="media-body">
+                <h4 class="media-heading">Catchy title</h4>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
 
-            <p>Lorem ipsum</p>
-
-            <p class="txt-line"><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented
-                84 times</a> </p>
-            <button class="btn">Commend</button>
-            <button class="btn">...</button>
+            <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i
+                    class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a
+                    href="#">JohnDoe94</a>, <a href="#">commented
+                84 times</a></p>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCommantModal">Add
+                Commend
+            </button>
+            <button type="button" class="btn btn-default">...</button>
         </article>
-        <article>
-            <p></p>
-            <img src="" alt=""/>
 
-            <h2>Catchy title</h2>
+        <article class="col-xs-12 col-md-12">
+            <a class="pull-left" href="#">
+                <img class="media-object"></a>
 
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+            <div class="media-body">
+                <h4 class="media-heading">Catchy title</h4>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
                 ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
                 dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
                 sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                 invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
                 justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                ipsum dolor sit amet.</p>
+                ipsum dolor sit amet.
+            </div>
 
-            <p class="txt-line"><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> •  shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented
+            <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i
+                    class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a
+                    href="#">JohnDoe94</a>, <a href="#">commented
                 3 times</a></p>
-            <button class="btn">Commend</button>
-            <button class="btn">...</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCommantModal">Add
+                Commend
+            </button>
+            <button type="button" class="btn btn-default">...</button>
 
-            <h3>All 3 Commants</h3>
-            <div class="comments">
-                <div class="comment">
-                    <p>Lorem ipsum dolor sit amet,</p>
-                    <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> -3 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> •  shared <a href="#">1 hours ago</a> by <a href="#">Donie89</a></p>
-                </div>
-                <div class="comment">
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                    ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                    dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor</p>
-                <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 4 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> •  shared <a href="#">20 minute ago</a> by <a href="#">Darko72</a></p>
-                </div>
-                <div class="comment">
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                    ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                    dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                    sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                    invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                    justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                    ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                    eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos</p>
-                <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> •  shared <a href="#">3 minute ago</a> by <a href="#">JohneDoe94</a></p>
+            <div class="comments-fix">
+                <h4>All 3 Commants</h4>
+
+                <div class="comments">
+                    <div class="comment">
+                        <p>Lorem ipsum dolor sit amet,</p>
+
+                        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> -3 <a href="#down"><i
+                                class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">1 hours
+                            ago</a> by <a
+                                href="#">Donie89</a></p>
+                    </div>
+                    <div class="comment">
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt
+                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                            justo duo
+                            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+                            dolor</p>
+
+                        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 4 <a href="#down"><i
+                                class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">20 minute
+                            ago</a> by
+                            <a href="#">Darko72</a></p>
+                    </div>
+                    <div class="comment">
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                            invidunt
+                            ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+                            justo duo
+                            dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
+                            dolor
+                            sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                            eirmod tempor
+                            invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+                            accusam et
+                            justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est
+                            Lorem
+                            ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+                            nonumy
+                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+                            vero
+                            eos</p>
+
+                        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down"><i
+                                class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">3 minute
+                            ago</a> by
+                            <a href="#">JohneDoe94</a></p>
+                    </div>
                 </div>
             </div>
         </article>
-        <article>
-            <img src="" alt=""/>
 
-            <h2>Catchy title</h2>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-                justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
-                ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos
-                et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                est Lorem ipsum dolor sit amet.
-
-                Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
-                illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
-                blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum
-                dolor sit amet,</p>
-
-            <p class="txt-line"><i class="glyphicon glyphicon-chevron-up"></i> 10 <i class="glyphicon glyphicon-chevron-down"></i> •  shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented
+        <article class="col-xs-12 col-md-12">
+            <div class="media-body">
+                <h4 class="media-heading">Catchy title</h4>
+                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
+                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
+                vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+            <p class="txt-line"><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i
+                    class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a
+                    href="#">JohnDoe94</a>, <a href="#">commented
                 84 times</a></p>
-            <button class="btn">Commend</button>
-            <button class="btn">...</button>
-        </article>
-        <article>
-            <img src="" alt=""/>
-
-            <h2>Catchy title</h2>
-
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo
-                dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-                sit amet.</p>
-
-            <p class="txt-line"><i class="glyphicon glyphicon-chevron-up"></i> -10 <i class="glyphicon glyphicon-chevron-down"></i> •  shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>, <a href="#">commented
-                84 times</a></p>
-            <button class="btn">Commend</button>
-            <button class="btn">...</button>
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#addCommantModal">Add
+                Commend
+            </button>
+            <button type="button" class="btn btn-default">...</button>
         </article>
     </div>
-    <footer>© 2014 whatever</footer>
 </div>
 
+<footer>
+    <div class="container">© 2014 whatever</div>
+</footer>
 
+<!-- Add Comment Modal -->
+<div class="modal fade" id="addCommantModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Commant</h4>
+            </div>
+            <form role="form">
+                <div class="modal-body">
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Commant</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
 
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
