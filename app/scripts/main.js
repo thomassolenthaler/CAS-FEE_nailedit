@@ -25,7 +25,9 @@ var nailedit = (function($,console) {
              */
             add:function(article,callback) {
                 article = $.extend(structure.article,article);
+                article.id = helper.getUID();
                 data.article.push(article);
+
                 if(callback) {
                     callback(article);
                 }
@@ -36,7 +38,11 @@ var nailedit = (function($,console) {
              * @param callback
              */
             getAll:function(callback) {
-                callback(data.article);
+                try {
+                    callback(data.article);
+                } catch(err) {
+                    console.log('nothing to display');
+                }
             },
             /**
              * Get one article that matches id
@@ -72,6 +78,9 @@ var nailedit = (function($,console) {
              */
             add:function(comment,callback) {
                 comment = $.extend(structure.comment,comment);
+                comment.commented = new Date();
+                comment.commenter = 'Mr. Comment';
+
                 data.comment.push(comment);
                 if(callback) {
                     callback(comment);
@@ -161,6 +170,15 @@ var nailedit = (function($,console) {
                 }
             }
             return false;
+        },
+        getUID:function() {
+            return ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
+        },
+        dirtyTmplMachine:function(html,data) {
+            data = data || {};
+            return html.replace(/{{(\w*)}}/g,function(m,key){
+                return data.hasOwnProperty(key) ? data[key] : "";
+            });
         }
     };
 
@@ -180,27 +198,57 @@ var nailedit = (function($,console) {
             if(articles.length > 0) {
                 for(article in articles) {
                     if(articles.hasOwnProperty(article)) {
-                        n.getArticleHTML(article);
+                        n.prepepndArticleHTML(article);
                     }
                 }
             } else {
                 throw "no articles to render";
             }
         },
-        getArticleHTML:function(article) {
-            var data = article || {};
+        prepepndArticleHTML:function(article) {
             var $article = $('#article-prototype').clone(); // get a copy of the article html
-            n._bindArticleEvents($article);
+            var parsedTmpl;
+
+            parsedTmpl = helper.dirtyTmplMachine($article.html(),article);
+
+            $article.attr('id','article-'+article.id);
+            $article.data('id',article.id);
+
+            $article.html(parsedTmpl);
+
+            n._bindArticleEvents($article,article.id);
 
             $article.removeClass('hidden');
-            $article.appendTo('#article-holder');
+            $article.prependTo('#article-holder');
+        },
+        appendCommentHTML:function(comment,article_id) {
+            var $comment = $('#comment-prototype').clone(); // get a copy of the article html
+            var parsedTmpl;
+
+            parsedTmpl = helper.dirtyTmplMachine($comment.html(),comment);
+
+            $comment.attr('id','comment-'+comment.id);
+            $comment.data('id',$comment.id);
+
+            $comment.html(parsedTmpl);
+
+            //n._bindCommentEvents($comment,comment.id);
+
+            $comment.removeClass('hidden');
+            $comment.appendTo('#article-'+article_id+' .comments');
+            $('.comments-fix','#article-'+article_id).removeClass('hidden');
         },
         addArticle:function() {
-            console.log('addarticle');
-            var content = $('#input-article').val();
-            if(content !== '') {
-                n.getArticleHTML();
-                model.article.add({content:content});
+            var url = $('#input-article-title').val();
+            var description = $('#input-article-text').val();
+            var article;
+            if(url !== '' && description !== '') {
+                model.article.add({
+                    description:description,
+                    url:url,
+                    posted:new Date(),
+                    poster:'Mr. Static'
+                },n.prepepndArticleHTML);
             } else {
                 throw "article cannot be empty";
             }
@@ -214,11 +262,12 @@ var nailedit = (function($,console) {
                 throw "id required";
             }
         },
-        addComment:function() {
-            console.log('addComment');
+        addComment:function(article_id) {
             var content = $('#input-comment').val();
-            if(content !== '') {
-                model.comment.add({content:content});
+            if(content !== '' && article_id !== '') {
+                model.comment.add({content:content,article_id:article_id},function(comment) {
+                    n.appendCommentHTML(comment,article_id);
+                });
             } else {
                 throw "comment cannot be empty";
             }
@@ -230,9 +279,9 @@ var nailedit = (function($,console) {
                 throw "id required";
             }
         },
-        addVote:function(type) {
+        addVote:function(type,callback) {
             if(type !== 'up' || type !== 'down') {
-                model.vote.add(type);
+                model.vote.add(type,callback);
             } else {
                 throw "type has to be up or down";
             }
@@ -266,7 +315,7 @@ var nailedit = (function($,console) {
             $('#btn-comment-save').on('click',n._onClickCommentSave);
         },
         _unbindCommentModalEvents:function() {
-            $('#input-comment').val();
+            $('#input-comment').val('');
             $('#btn-comment-save').off('click');
         },
         _bindArticleModalEvents:function() {
@@ -285,25 +334,36 @@ var nailedit = (function($,console) {
         _onClickArticleAdd:function() {
             n.addArticle();
             n.hideArticleModal();
+            $('#input-article').val('');
         },
         _onClickVoteUp:function() {
             n.addVote('up',function() {
-
+                console.log('voted up');
             });
+            return false;
         },
         _onClickVoteDown:function() {
-            n.addVote('down');
+            n.addVote('down',function() {
+                console.log('voted down');
+            });
+            return false;
         },
         _onClickComment:function() {
-            n.addComment();
+            // show comments
         },
-        _onClickCommentAdd:function() {
-            console.log("comment add");
-            $('#addCommentModal').modal('show');
+        _onClickCommentAdd:function(ev) {
+            var article_id = $(ev.target).parent('article').data('id');
+
+            $('#addCommentModal')
+                .data('article_id',article_id)
+                .modal('show');
+
             n.showCommentModal();
         },
         _onClickCommentSave:function() {
-            n.addComment();
+            var article_id = $('#addCommentModal').data('article_id');
+
+            n.addComment(article_id);
             n.hideCommentModal();
 
             return false; // no form submit wanted ;)

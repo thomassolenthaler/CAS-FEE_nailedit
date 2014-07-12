@@ -84,21 +84,29 @@
     <div class="container">© 2014 whatever</div>
 </footer>
 
-<!-- Article Box prototype -->
-<div class="hidden clearfix">
+<div class="hidden">
+    <!-- Article Box prototype -->
     <article id="article-prototype" class="col-xs-12 col-md-12">
         <a class="pull-left" href="#"><img class="media-object"></a>
         <div class="media-body">
-            <h4 class="media-heading">Catchy title</h4>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.
-            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-            vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <h4 class="media-heading">{{url}}</h4>
+            <p>{{description}}</p>
         </div>
-        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 10 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">2 hours ago</a> by <a href="#">JohnDoe94</a>,
-            <a href="#">commented 84 times</a></p>
+        <p><a href="#up" class="btn-vote-up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down" class="btn-vote-down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">{{posted}}</a> by <a href="#">{{poster}}</a>,
+            <a href="#">commented 0 times</a></p>
         <button type="button" class="btn btn-default btn-comment-add">Add Commend</button>
         <button type="button" class="btn btn-default">...</button>
+        <div class="hidden comments-fix">
+            <h4>All 0 Comments</h4>
+            <div class="comments"></div>
+        </div>
     </article>
+
+    <!-- Comment box prototype -->
+    <div id="comment-prototype" class="comment">
+        <p>{{content}}</p>
+        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">{{commented}}</a> by <a href="#">{{commenter}}</a></p>
+    </div>
 </div>
 
 <!-- Add Comment Modal -->
@@ -115,7 +123,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="btn-comment-save" type="submit" class="btn btn-primary">Save</button>
+                    <button id="btn-comment-save" type="button" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
