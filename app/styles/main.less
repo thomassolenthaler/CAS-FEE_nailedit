@@ -36,38 +36,9 @@ footer #wrapper:after {
   background-color:coral;
 }
 
-input[type=search] {
-  text-align: right;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  letter-spacing: 2px;
-  word-spacing: 20px;
-}
-
 #main {
   width:980px;
   padding:45px 20px 0;
-}
-
-.share-form {
-  margin-top:20px;
-}
-
-.share-form .input-huge,
-.share-form .btn-share {
-  font-size:2em;
-  font-weight:700;
-  padding:10px;
-}
-
-.share-form .input-huge {
-  margin-right:10px;
-}
-
-.share-form .btn-share {
-  width:130px;
-  margin-left:10px;
 }
 
 article {
@@ -88,12 +59,16 @@ article img {
   border:1px solid cornflowerblue;
 }
 
-article .txt-line {
-  float:left;
-  margin-right:20px;
+.comments-fix {
+  margin-top: 20px;
 }
 
-.comment {
+.media-object {
+  width: 100px;
+  height: 100px;
+}
+
+.comment:not(:last-child) {
   margin-bottom: 20px;
 }
 
