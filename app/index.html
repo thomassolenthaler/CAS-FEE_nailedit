@@ -42,7 +42,7 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="#">Trendingd</a>
+                    <a href="#">Trending</a>
                 </li>
                 <li>
                     <a href="#">New</a>
@@ -92,12 +92,12 @@
             <h4 class="media-heading">{{url}}</h4>
             <p>{{description}}</p>
         </div>
-        <p><a href="#up" class="btn-vote-up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down" class="btn-vote-down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">{{posted}}</a> by <a href="#">{{poster}}</a>,
-            <a href="#">commented 0 times</a></p>
-        <button type="button" class="btn btn-default btn-comment-add">Add Commend</button>
+        <p><a href="#up" class="btn-vote-up"><i class="glyphicon glyphicon-chevron-up"></i></a> <span class="vote-sum">0</span> <a href="#down" class="btn-vote-down"><i class="glyphicon glyphicon-chevron-down"></i></a> - shared <a href="#">{{posted}}</a> by <a href="#">{{poster}}</a>,
+            <a href="#">commented <span class="comment-count">0</span> times</a></p>
+        <button type="button" class="btn btn-default btn-comment-add">Add Comment</button>
         <button type="button" class="btn btn-default">...</button>
         <div class="hidden comments-fix">
-            <h4>All 0 Comments</h4>
+            <h4><span class="comment-count">0</span> Comments</h4>
             <div class="comments"></div>
         </div>
     </article>
@@ -105,7 +105,7 @@
     <!-- Comment box prototype -->
     <div id="comment-prototype" class="comment">
         <p>{{content}}</p>
-        <p><a href="#up"><i class="glyphicon glyphicon-chevron-up"></i></a> 0 <a href="#down"><i class="glyphicon glyphicon-chevron-down"></i></a> • shared <a href="#">{{commented}}</a> by <a href="#">{{commenter}}</a></p>
+        commented <a href="#">{{commented}}</a> by <a href="#">{{commenter}}</a></p>
     </div>
 </div>
 
@@ -115,14 +115,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Add Comment</h4>
+                <h4 class="modal-title">Add comment</h4>
             </div>
             <form role="form">
                 <div class="modal-body">
                     <textarea id="input-comment" class="form-control" rows="3"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button id="btn-comment-save" type="button" class="btn btn-primary">Save</button>
                 </div>
             </form>
@@ -136,27 +136,27 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Add Link</h4>
+                <h4 class="modal-title">Write article</h4>
             </div>
             <form class="form-horizontal" role="form">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="input-article-title" class="col-sm-2 control-label">Article</label>
+                        <label for="input-article-title" class="col-sm-2 control-label hidden">URL/Title</label>
 
                         <div class="col-sm-10">
                             <input id="input-article-title" type="text"  name="link" class="form-control input-lg" placeholder="Type url or article to share">
                         </div>
                     </div>
                     <div class="form-group" class="col-sm-2 control-label">
-                        <label for="input-article-text" class="col-sm-2 control-label">Text</label>
+                        <label for="input-article-text" class="col-sm-2 control-label hidden">Description</label>
 
                         <div class="col-sm-10">
-                            <textarea class="form-control" id="input-article-text" rows="3"></textarea>
+                            <textarea class="form-control" id="input-article-text" rows="3" placeholder="Description"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button id="btn-article-save" type="button" type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>

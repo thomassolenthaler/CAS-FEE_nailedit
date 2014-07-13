@@ -24,7 +24,7 @@ var nailedit = (function($,console) {
              * @returns {boolean}
              */
             add:function(article,callback) {
-                article = $.extend(structure.article,article);
+                article = $.extend({},structure.article,article);
                 article.id = helper.getUID();
                 data.article.push(article);
 
@@ -77,7 +77,7 @@ var nailedit = (function($,console) {
              * @returns {boolean}
              */
             add:function(comment,callback) {
-                comment = $.extend(structure.comment,comment);
+                comment = $.extend({},structure.comment,comment);
                 comment.commented = new Date();
                 comment.commenter = 'Mr. Comment';
 
@@ -112,8 +112,10 @@ var nailedit = (function($,console) {
              * @returns {boolean}
              */
             add:function(vote,callback) {
-                vote = $.extend(structure.vote,vote);
+                vote = $.extend({},structure.vote,vote);
+                vote.id = helper.getUID();
                 data.vote.push(vote);
+
                 if(callback) {
                     callback(vote);
                 }
@@ -143,10 +145,15 @@ var nailedit = (function($,console) {
                 // loop votes from article and summarize votes by type
                 for(vote in votes) {
                     if(votes.hasOwnProperty(vote)) {
-                        vote.type === 'up' ? sum.upvote++ : sum.downvote--;
+                        votes[vote].type === 'up' ? sum.upvote++ : sum.downvote++;
                     }
                 }
                 return sum;
+            },
+            getVoteTotalForArticle:function(article_id) {
+                var sum = model.vote.sumVotesForArticle(article_id);
+                return sum.upvote-sum.downvote;
+
             }
         }
     };
@@ -162,18 +169,29 @@ var nailedit = (function($,console) {
          */
         find:function(needle,haystack,property) {
             var elem;
+            var result = [];
             property = property || 'id';
 
             for(elem in haystack) {
-                if(haystack.hasOwnProperty(elem) && elem[property] === needle) {
-                    return elem;
+                if(haystack.hasOwnProperty(elem) && haystack[elem][property] === needle) {
+                    result.push(haystack[elem]);
                 }
             }
-            return false;
+            return result;
         },
+        /**
+         * Generates a random key for our data since we're lacking a backend system
+         * @returns {*|string}
+         */
         getUID:function() {
             return ("0000" + (Math.random()*Math.pow(36,4) << 0).toString(36)).slice(-4);
         },
+        /**
+         * The super minimalistic html placeholder/variable substitution engine ;)
+         * @param html
+         * @param data
+         * @returns {*|XML|string|void}
+         */
         dirtyTmplMachine:function(html,data) {
             data = data || {};
             return html.replace(/{{(\w*)}}/g,function(m,key){
@@ -198,7 +216,7 @@ var nailedit = (function($,console) {
             if(articles.length > 0) {
                 for(article in articles) {
                     if(articles.hasOwnProperty(article)) {
-                        n.prepepndArticleHTML(article);
+                        n.prepepndArticleHTML(articles[article]);
                     }
                 }
             } else {
@@ -268,6 +286,8 @@ var nailedit = (function($,console) {
                 model.comment.add({content:content,article_id:article_id},function(comment) {
                     n.appendCommentHTML(comment,article_id);
                 });
+
+                $('#article-'+article_id+' .comment-count').text(data.comment.length);
             } else {
                 throw "comment cannot be empty";
             }
@@ -279,9 +299,10 @@ var nailedit = (function($,console) {
                 throw "id required";
             }
         },
-        addVote:function(type,callback) {
-            if(type !== 'up' || type !== 'down') {
-                model.vote.add(type,callback);
+        addVote:function(article_id,type,callback) {
+            if(article_id !== '' && (type !== 'up' || type !== 'down')) {
+                model.vote.add({type:type,article_id:article_id},callback);
+                $('#article-'+article_id+' .vote-sum').text(model.vote.getVoteTotalForArticle(article_id));
             } else {
                 throw "type has to be up or down";
             }
@@ -336,23 +357,21 @@ var nailedit = (function($,console) {
             n.hideArticleModal();
             $('#input-article').val('');
         },
-        _onClickVoteUp:function() {
-            n.addVote('up',function() {
-                console.log('voted up');
-            });
+        _onClickVoteUp:function(ev) {
+            var article_id = n._getArticleId(ev);
+            n.addVote(article_id,'up');
             return false;
         },
-        _onClickVoteDown:function() {
-            n.addVote('down',function() {
-                console.log('voted down');
-            });
+        _onClickVoteDown:function(ev) {
+            var article_id = n._getArticleId(ev);
+            n.addVote(article_id,'down');
             return false;
         },
         _onClickComment:function() {
             // show comments
         },
         _onClickCommentAdd:function(ev) {
-            var article_id = $(ev.target).parent('article').data('id');
+            var article_id = n._getArticleId(ev);
 
             $('#addCommentModal')
                 .data('article_id',article_id)
@@ -367,6 +386,9 @@ var nailedit = (function($,console) {
             n.hideCommentModal();
 
             return false; // no form submit wanted ;)
+        },
+        _getArticleId:function(ev) {
+            return $(ev.target).parents('article').data('id');
         }
     };
 
